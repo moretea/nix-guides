@@ -1,5 +1,5 @@
 language: nix
-script: nix-build -A release
+script: nix-build -I "nixpkgs=https://github.com/NixOS/nixpkgs-channels/archive/nixos-16.09.tar.gz" -A release
 after_success:
   - if [ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master"]; then
       echo "Deploying to GitHub pages"
