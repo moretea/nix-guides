@@ -1,0 +1,13 @@
+site_name: Nix Guides
+site_url: https://moretea.github.io/nix-guides/
+repo_url: https://github.com/moretea/nix-guides/
+
+docs_dir: 'guides'
+strict: true
+
+pages:
+  - Home: index.md
+  - Overview: overview.md
+  - Tutorial: getting-started-tutorial.md
+  - Packaging:
+    - Background: packaging/background.md
