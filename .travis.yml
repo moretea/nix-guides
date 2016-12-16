@@ -1,21 +1,7 @@
 language: nix
 script: nix-build -I "nixpkgs=https://github.com/NixOS/nixpkgs-channels/archive/nixos-16.09.tar.gz" -A release
 after_success:
-  - if [ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master"]; then
-      echo "Deploying to GitHub pages"
-      mkdir gh_pages
-      cd gh_pages
-      git init
-      git config user.name "nixos-guides-travis-build"
-      git config user.email "maarten@moretea.nl"
-      git remote add origin "https://$GH_TOKEN@github.com/moretea/nix-guides"
-      git fetch
-      git reset origin/gh-pages
-      cp -r ../result/* .
-      git add -A .
-      git commit -m "Rebuild pages from $TRAVIS_COMMIT"
-      git push -q origin HEAD:gh-pages
-    fi
+  - bash .travis-gh-deploy.sh
 env:
   global:
     secure: dceFs3vgytetl5t5Vx7UvXWZpwy1brVj9ipQB+DRmWhqUxV8Lhh0ttbURE9KYFLIh9k8542C/YZq8P5eua1iSSotL/zY8UBmQ4U1BWeKUYO78OP662kKpPioStCkEckRVakhTcN68s1B5sls/ltWL28a5lzIwgW72XrBi5GuHryNdlifRJc5zpkR9Lgw71hNAsyNIRLAjlGyvSKG2pxXuJ2ckpMfIDUXaYcSeK/aSaOut9G5ecGQ54MoHNyV7/5o1RfIan3zMU0pR3FBhN7XGmOJHej21Ftyr0MpGGFbl5NHmfSP3e5sJ/7QeTDIPYbEWscxDAriCCoNZ0eJ4rEU8caWNdkxTJdAJF87mSoo0PS1xXzVEnXg/OUlX052o5QjfUBj2tzs2k1XY4JaZoa3Z+Eg5dA6SCClS9puInuCutoMWHjiTLS8MBqo5es565rvdhD7BhTSAzaeTWgtV/Jd4fuf6Joe4Iv+dWQVg3/Nb274QDefLHu7nZ+oe2kmpwwoSI1wGGeTO7AioYOm1LwS5cNI6TASWBiodOh6WJWi0TEi3BT2SkW5ksRRnFDYLVMXN0tnHtfwUB/+t8nMREo2M6lVzendew27i43vJVkSqwMOIwRtrRs4prS5AH+NRj9kRgxmC1wvItafEHNEZLtwS3GV9Yveusn8ebHToCQcCXA=
