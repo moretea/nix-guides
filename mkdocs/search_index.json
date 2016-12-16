@@ -1,0 +1,94 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Nix Guides\n\n\nWelcome to Nix Guides!\nWith this set of guides targetted at new Nix users, we hope to give a gentle introduction to the \nNix universe.\n\n\nOur goal is to have a set of guides that take you, the end-user, through all the steps you need\nin a sequential order to accomplish certain tasks.\nThe Nix, Nixpkgs, and NixOs manuals are great as reference manuals, but are not good to use as\nlearning material.\n\n\nWhy bother learning Nix?\n\n\nWe believe that Nix has a unique value proposition. It offers \ndeclarative specifications\n of\nsoftware packages, machine configurations and even cloud resources.\nIt is \nreliable\n, by not ever replacing components. This makes \natomic upgrades and rollbacks\n\neasy and safe.\n\n\nWhat to read next\n\n\nIf you're completely new to Nix, we recommend to take a quick peek at the \nOverview\n,\nand then follow the \nGetting Started Tutorial\n.\nFrom there on you can pick any guide in any order you like.", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#nix-guides", 
+            "text": "Welcome to Nix Guides!\nWith this set of guides targetted at new Nix users, we hope to give a gentle introduction to the \nNix universe.  Our goal is to have a set of guides that take you, the end-user, through all the steps you need\nin a sequential order to accomplish certain tasks.\nThe Nix, Nixpkgs, and NixOs manuals are great as reference manuals, but are not good to use as\nlearning material.", 
+            "title": "Nix Guides"
+        }, 
+        {
+            "location": "/#why-bother-learning-nix", 
+            "text": "We believe that Nix has a unique value proposition. It offers  declarative specifications  of\nsoftware packages, machine configurations and even cloud resources.\nIt is  reliable , by not ever replacing components. This makes  atomic upgrades and rollbacks \neasy and safe.", 
+            "title": "Why bother learning Nix?"
+        }, 
+        {
+            "location": "/#what-to-read-next", 
+            "text": "If you're completely new to Nix, we recommend to take a quick peek at the  Overview ,\nand then follow the  Getting Started Tutorial .\nFrom there on you can pick any guide in any order you like.", 
+            "title": "What to read next"
+        }, 
+        {
+            "location": "/overview/", 
+            "text": "Overview of the Nix ecosystem\n\n\n\n\nExplain concepts between \n\n\nnix expr lang\n\n\nderivation\n\n\nnixpkgs", 
+            "title": "Overview"
+        }, 
+        {
+            "location": "/overview/#overview-of-the-nix-ecosystem", 
+            "text": "Explain concepts between   nix expr lang  derivation  nixpkgs", 
+            "title": "Overview of the Nix ecosystem"
+        }, 
+        {
+            "location": "/getting-started-tutorial/", 
+            "text": "Getting Started Tutorial\n\n\nInstalling a program\n\n\nDeveloping Hello World\n\n\nC\n\n\nJavascript\n\n\nRuby\n\n\nGo\n\n\nRust\n\n\nManaging a virtual machine", 
+            "title": "Tutorial"
+        }, 
+        {
+            "location": "/getting-started-tutorial/#getting-started-tutorial", 
+            "text": "", 
+            "title": "Getting Started Tutorial"
+        }, 
+        {
+            "location": "/getting-started-tutorial/#installing-a-program", 
+            "text": "", 
+            "title": "Installing a program"
+        }, 
+        {
+            "location": "/getting-started-tutorial/#developing-hello-world", 
+            "text": "", 
+            "title": "Developing Hello World"
+        }, 
+        {
+            "location": "/getting-started-tutorial/#c", 
+            "text": "", 
+            "title": "C"
+        }, 
+        {
+            "location": "/getting-started-tutorial/#javascript", 
+            "text": "", 
+            "title": "Javascript"
+        }, 
+        {
+            "location": "/getting-started-tutorial/#ruby", 
+            "text": "", 
+            "title": "Ruby"
+        }, 
+        {
+            "location": "/getting-started-tutorial/#go", 
+            "text": "", 
+            "title": "Go"
+        }, 
+        {
+            "location": "/getting-started-tutorial/#rust", 
+            "text": "", 
+            "title": "Rust"
+        }, 
+        {
+            "location": "/getting-started-tutorial/#managing-a-virtual-machine", 
+            "text": "", 
+            "title": "Managing a virtual machine"
+        }, 
+        {
+            "location": "/packaging/background/", 
+            "text": "Packaging software\n\n\n\n\nLinear: chef/puppet/ansible\n\n\nTree: docker image based / vms\n\n\nGraph based dependencies: nix", 
+            "title": "Background"
+        }, 
+        {
+            "location": "/packaging/background/#packaging-software", 
+            "text": "Linear: chef/puppet/ansible  Tree: docker image based / vms  Graph based dependencies: nix", 
+            "title": "Packaging software"
+        }
+    ]
+}
