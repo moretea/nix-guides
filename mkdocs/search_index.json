@@ -2,22 +2,22 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Nix Guides\n\n\nWelcome to Nix Guides!\nWith this set of guides targetted at new Nix users, we hope to give a gentle introduction to the \nNix universe.\n\n\nOur goal is to have a set of guides that take you, the end-user, through all the steps you need\nin a sequential order to accomplish certain tasks.\nThe Nix, Nixpkgs, and NixOs manuals are great as reference manuals, but are not good to use as\nlearning material.\n\n\nWhy bother learning Nix?\n\n\nWe believe that Nix has a unique value proposition. It offers \ndeclarative specifications\n of\nsoftware packages, machine configurations and even cloud resources.\nIt is \nreliable\n, by not ever replacing components. This makes \natomic upgrades and rollbacks\n\neasy and safe.\n\n\nWhat to read next\n\n\nIf you're completely new to Nix, we recommend to take a quick peek at the \nOverview\n,\nand then follow the \nGetting Started Tutorial\n.\nFrom there on you can pick any guide in any order you like.", 
+            "text": "Nix Guides\n\n\nWelcome to Nix Guides!\nWith this set of guides targetted at new Nix users, we hope to give a gentle introduction to the \nNix universe.\n\n\nOur goal is to have a set of guides that take you, the end-user, through all the steps you need\nin a sequential order to accomplish certain tasks.\nThe Nix, Nixpkgs, and NixOs manuals are great as reference manuals, but are to detailed to use\nas learning material.\n\n\nWhy bother learning Nix?\n\n\nWe believe that Nix has a unique value proposition.It offers \ndeclarative specifications\n of\nsoftware packages, machine configurations and even cloud resources. \nBecause of these declarative specifications, we have \nrepreducible builds\n, not just of\nsoftware packages, but also of complete machines and cluster configurations \n1\n.\nThis can be used to have \nidentical environments\n in production and development, and among the\ndifferent machines used by developers.\nIt is \nreliable\n, by not ever replacing components. This makes \natomic upgrades and rollbacks\n\neasy and safe, in contrast to most distributions, where updates can break the OS if it's\ninterrupted at the wrong time.\n\n\nWhat to read next\n\n\nIf you're completely new to Nix, we recommend to take a quick peek at the \nOverview\n,\nand then follow the \nGetting Started Tutorial\n.\nFrom there on you can pick any guide in any order you like.\n\n\n\n\n\n\n\n\n\n\nCluster configurations are modulo dynamic settings that depend on the cluster environment,\nsuch as the IP address assigned to a VM.", 
             "title": "Home"
         }, 
         {
             "location": "/#nix-guides", 
-            "text": "Welcome to Nix Guides!\nWith this set of guides targetted at new Nix users, we hope to give a gentle introduction to the \nNix universe.  Our goal is to have a set of guides that take you, the end-user, through all the steps you need\nin a sequential order to accomplish certain tasks.\nThe Nix, Nixpkgs, and NixOs manuals are great as reference manuals, but are not good to use as\nlearning material.", 
+            "text": "Welcome to Nix Guides!\nWith this set of guides targetted at new Nix users, we hope to give a gentle introduction to the \nNix universe.  Our goal is to have a set of guides that take you, the end-user, through all the steps you need\nin a sequential order to accomplish certain tasks.\nThe Nix, Nixpkgs, and NixOs manuals are great as reference manuals, but are to detailed to use\nas learning material.", 
             "title": "Nix Guides"
         }, 
         {
             "location": "/#why-bother-learning-nix", 
-            "text": "We believe that Nix has a unique value proposition. It offers  declarative specifications  of\nsoftware packages, machine configurations and even cloud resources.\nIt is  reliable , by not ever replacing components. This makes  atomic upgrades and rollbacks \neasy and safe.", 
+            "text": "We believe that Nix has a unique value proposition.It offers  declarative specifications  of\nsoftware packages, machine configurations and even cloud resources. \nBecause of these declarative specifications, we have  repreducible builds , not just of\nsoftware packages, but also of complete machines and cluster configurations  1 .\nThis can be used to have  identical environments  in production and development, and among the\ndifferent machines used by developers.\nIt is  reliable , by not ever replacing components. This makes  atomic upgrades and rollbacks \neasy and safe, in contrast to most distributions, where updates can break the OS if it's\ninterrupted at the wrong time.", 
             "title": "Why bother learning Nix?"
         }, 
         {
             "location": "/#what-to-read-next", 
-            "text": "If you're completely new to Nix, we recommend to take a quick peek at the  Overview ,\nand then follow the  Getting Started Tutorial .\nFrom there on you can pick any guide in any order you like.", 
+            "text": "If you're completely new to Nix, we recommend to take a quick peek at the  Overview ,\nand then follow the  Getting Started Tutorial .\nFrom there on you can pick any guide in any order you like.      Cluster configurations are modulo dynamic settings that depend on the cluster environment,\nsuch as the IP address assigned to a VM.", 
             "title": "What to read next"
         }, 
         {
@@ -32,13 +32,18 @@
         }, 
         {
             "location": "/getting-started-tutorial/", 
-            "text": "Getting Started Tutorial\n\n\nInstalling a program\n\n\nDeveloping Hello World\n\n\nC\n\n\nJavascript\n\n\nRuby\n\n\nGo\n\n\nRust\n\n\nManaging a virtual machine", 
+            "text": "Getting Started Tutorial\n\n\nGet Nix\n\n\n\n\nDocker Image\n\n\nInstall on your Linux Distro\n\n\nInstall NixOS (on a VM)\n\n\n\n\nInstalling a program\n\n\nDeveloping Hello World\n\n\nC\n\n\n\n- Create a \nhello.c\n file with the following contents:\n\n\n\n\n\n#include \nstdio.h\n\n\nint main(int argc, char* argv[]) {\n  printf(\nHello World!\n);\n  return 0;\n}\n\n\n\n\nAnd a nix expression file with the following contents:\n\n\n\n\n\nwith import \nnixpkgs\n {};\n{\n  hello = stdenv.mkDerivation {\n    name = \nhello\n;\n    src = ./hello.c;\n  };\n}\n\n\n\n\n\n\n\n\n\n\nJavascript\n\n\nRuby\n\n\nGo\n\n\nRust\n\n\nManaging a virtual machine", 
             "title": "Tutorial"
         }, 
         {
             "location": "/getting-started-tutorial/#getting-started-tutorial", 
             "text": "", 
             "title": "Getting Started Tutorial"
+        }, 
+        {
+            "location": "/getting-started-tutorial/#get-nix", 
+            "text": "Docker Image  Install on your Linux Distro  Install NixOS (on a VM)", 
+            "title": "Get Nix"
         }, 
         {
             "location": "/getting-started-tutorial/#installing-a-program", 
@@ -52,7 +57,7 @@
         }, 
         {
             "location": "/getting-started-tutorial/#c", 
-            "text": "", 
+            "text": "- Create a  hello.c  file with the following contents:   #include  stdio.h \n\nint main(int argc, char* argv[]) {\n  printf( Hello World! );\n  return 0;\n}  And a nix expression file with the following contents:   with import  nixpkgs  {};\n{\n  hello = stdenv.mkDerivation {\n    name =  hello ;\n    src = ./hello.c;\n  };\n}", 
             "title": "C"
         }, 
         {

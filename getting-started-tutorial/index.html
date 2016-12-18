@@ -95,6 +95,7 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#getting-started-tutorial">Getting Started Tutorial</a></li>
+            <li><a href="#get-nix">Get Nix</a></li>
             <li><a href="#installing-a-program">Installing a program</a></li>
             <li><a href="#developing-hello-world">Developing Hello World</a></li>
             <li><a href="#managing-a-virtual-machine">Managing a virtual machine</a></li>
@@ -103,9 +104,47 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="getting-started-tutorial">Getting Started Tutorial</h1>
+<h2 id="get-nix">Get Nix</h2>
+<ul>
+<li>Docker Image</li>
+<li>Install on your Linux Distro</li>
+<li>Install NixOS (on a VM)</li>
+</ul>
 <h2 id="installing-a-program">Installing a program</h2>
 <h2 id="developing-hello-world">Developing Hello World</h2>
 <h3 id="c">C</h3>
+<p><!-- start-test "hello world c" -->
+- Create a <code>hello.c</code> file with the following contents:</p>
+<!-- write-file "hello.c" -->
+
+<pre class="codehilite"><code class="language-c linenums">#include &lt;stdio.h&gt;
+
+int main(int argc, char* argv[]) {
+  printf(&quot;Hello World!&quot;);
+  return 0;
+}</code></pre>
+
+
+<p>And a nix expression file with the following contents:</p>
+<!-- write-file "hello.nix" -->
+
+<pre class="codehilite"><code class="language-nix linenums">with import &lt;nixpkgs&gt; {};
+{
+  hello = stdenv.mkDerivation {
+    name = &quot;hello&quot;;
+    src = ./hello.c;
+  };
+}</code></pre>
+
+
+<!-- test
+echo $NIX_PATH
+nix-env -qa
+nix-env -i neovim
+-->
+
+<!-- end-test "hello world c" -->
+
 <h3 id="javascript">Javascript</h3>
 <h3 id="ruby">Ruby</h3>
 <h3 id="go">Go</h3>

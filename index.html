@@ -107,17 +107,31 @@ With this set of guides targetted at new Nix users, we hope to give a gentle int
 Nix universe.</p>
 <p>Our goal is to have a set of guides that take you, the end-user, through all the steps you need
 in a sequential order to accomplish certain tasks.
-The Nix, Nixpkgs, and NixOs manuals are great as reference manuals, but are not good to use as
-learning material.</p>
+The Nix, Nixpkgs, and NixOs manuals are great as reference manuals, but are to detailed to use
+as learning material.</p>
 <h3 id="why-bother-learning-nix">Why bother learning Nix?</h3>
-<p>We believe that Nix has a unique value proposition. It offers <strong>declarative specifications</strong> of
-software packages, machine configurations and even cloud resources.
+<p>We believe that Nix has a unique value proposition.It offers <strong>declarative specifications</strong> of
+software packages, machine configurations and even cloud resources. 
+Because of these declarative specifications, we have <strong>repreducible builds</strong>, not just of
+software packages, but also of complete machines and cluster configurations <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>.
+This can be used to have <em>identical environments</em> in production and development, and among the
+different machines used by developers.
 It is <strong>reliable</strong>, by not ever replacing components. This makes <strong>atomic upgrades and rollbacks</strong>
-easy and safe.</p>
+easy and safe, in contrast to most distributions, where updates can break the OS if it's
+interrupted at the wrong time.</p>
 <h3 id="what-to-read-next">What to read next</h3>
 <p>If you're completely new to Nix, we recommend to take a quick peek at the <a href="overview/">Overview</a>,
 and then follow the <a href="getting-started-tutorial/">Getting Started Tutorial</a>.
-From there on you can pick any guide in any order you like.</p></div>
+From there on you can pick any guide in any order you like.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Cluster configurations are modulo dynamic settings that depend on the cluster environment,
+such as the IP address assigned to a VM.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
         </div>
 
         <footer class="col-md-12">
