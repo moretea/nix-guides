@@ -5,6 +5,12 @@ repo_url: https://github.com/moretea/nix-guides/
 docs_dir: 'guides'
 strict: true
 
+markdown_extensions:
+  - footnotes
+  - codehilite:
+      linenums: True
+  - admonition
+
 pages:
   - Home: index.md
   - Overview: overview.md
