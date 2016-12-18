@@ -32,4 +32,5 @@ in
     '';
   };
 
+  tests = import ./tests.nix { inherit lib pkgs stdenv; };
 }

@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+require "optparse"
+require_relative "../lib/guide_tester"
+
+def main
+  json_file = nil
+
+  opt_parser = OptionParser.new do |opts|
+    opts.banner = "USAGE: runner[options]"
+
+    opts.on("-h", "--help", "Print help") do
+      puts opts
+      exit 0
+    end
+
+    opts.on("-jFILE", "--json=FILE", "JSON file to run") do |v|
+      json_file = v
+    end
+  end
+
+  opt_parser.parse!(ARGV)
+
+  if json_file.nil?
+    raise GuideTester::InputError.new("JSON file not set")
+  end
+
+  if !File.exists? json_file
+    raise GuideTester::InputError.new("JSON file does not exist!")
+  end
+  raw_json = File.read(json_file)
+
+  begin
+    json = JSON.load(raw_json) 
+  rescue JSON::ParserError => e
+    raise GuideTester::InputError.new("Could not parse JSON file; #{e.message}")
+  end
+
+  GuideTester::Test::Runner.new(json).run!
+end
+
+begin
+  main
+rescue GuideTester::Error => e
+  puts "An internal error occured:".red.bold
+  puts e.message.red
+  exit 1
+end

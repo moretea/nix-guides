@@ -1,0 +1,102 @@
+#!/usr/bin/env ruby
+require "optparse"
+require "yaml"
+require_relative "../lib/guide_tester"
+
+DEFAULT_GLOB = "**/*.md"
+DEFAULT_OUTPUT_DIR = "./generated_guide_tests"
+DEFAULT_BASE_DIR = "guides"
+
+def main
+  output_dir = DEFAULT_OUTPUT_DIR
+  
+  inputs = []
+  base_dir = nil
+
+  opt_parser = OptionParser.new do |opts|
+    opts.banner = "USAGE: gen_tests [options]"
+
+    opts.on("-h", "--help", "Print help") do
+      puts opts
+      puts "Notes:"
+      puts "  - If no input is given, it defaults to '#{DEFAULT_GLOB}'"
+      puts "  - If no output is given, it defaults to '#{DEFAULT_OUTPUT_DIR}'"
+      puts "  - If a base dir must be set, set it before using --input"
+      exit 0
+    end
+
+    opts.on("-bDIR", "--base-dir=DIR", "Set base dir. Files are searched relatative to this dir") do |v|
+      if base_dir != nil
+        raise GuideTester::InputError.new("Base dir can be set only once!")
+      else
+        base_dir = v
+      end
+    end
+    opts.on("-iPATTERN", "--input=PATTERN", "Also generate tests for this input. Accepts ruby's Dir.glob pattern") do |v|
+      to_add = Dir[File.join(base_dir,v)]
+      if to_add.empty?
+        raise GuideTester::InputError.new("-i '#{v}' does not result in any matched files!")
+      end
+      input_files += to_add
+    end
+
+    opts.on("-oOUTPUT_DIR", "--output=OUTPUT_DIR", "Write output files in this directory") do |v|
+      output_dir = v
+    end
+  end
+
+  opt_parser.parse!(ARGV)
+
+  if base_dir.nil?
+    base_dir = DEFAULT_BASE_DIR
+  end
+
+  if inputs.empty?
+    to_add = Dir[File.join(base_dir, DEFAULT_GLOB)]
+    if to_add.empty?
+      raise GuideTester::InputError.new("No files found using default pattern (#{DEFAULT_GLOB})")
+    else
+      inputs = to_add
+    end
+  end
+
+  missing = inputs.select { |file| ! File.exists? file }
+
+  if missing.any?
+    raise GuideTester::InputError.new("File(s) #{missing.join(", ")} do not exist!")
+  end
+
+  test_inputs = inputs.select do |input|
+    parts = File.read(input).split("---",2)
+    if parts.length < 2
+      false
+    else
+      yaml = YAML.load(parts.first) rescue nil
+      if yaml.nil?
+        false
+      else
+        yaml.has_key?("runGuideTests") && yaml["runGuideTests"] == true
+      end
+    end
+  end
+
+  not_testing = inputs - test_inputs
+
+  if not_testing.any?
+    puts "Following files are ".yellow + "not".yellow.underline + " marked with runGuideTests:".yellow
+    puts " - " + not_testing.join("\n - ")
+  end
+
+  puts "Generating tests for:".blue.bold
+  puts " - " + test_inputs.join("\n - ")
+
+  GuideTester.generate_tests!(output_dir, base_dir, test_inputs)
+end
+
+begin
+  main
+rescue GuideTester::Error => e
+  puts "An internal error occured:".red.bold
+  puts e.message.red
+  exit 1
+end
