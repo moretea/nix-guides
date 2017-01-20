@@ -1,0 +1,37 @@
+{
+  "name": "NixOS Ecosystem",
+  "children": [
+    { "name": "Nix",
+      "children": [
+        { "name": "Expression Language", "size":10 },
+        { "name": "Store", "size":30 },
+        { "name": "Build daemon", "size":30 }
+      ]
+    },
+    { "name": "nixpkgs",
+      "html": "Package collection contains some nice shit.",
+      "children": [
+        { "name": "Packages", "size":10 },
+        { "name": "Development",
+          "children": [
+            { "name": "Repreducable environments", "size": 20 },
+            { "name": "Precompiled libraries", "size": 20 },
+            { "name": "Reuse blah", "size": 20 }
+          ]
+        }
+      ]
+    },
+    { "name": "NixOS",
+      "children": [
+        { "name": "Hardware Configuration", "size":10 },
+        { "name": "Module System", "size":20 }
+      ]
+    },
+    { "name": "Deploment",
+      "children": [
+        { "name": "NixOps", "size":30 },
+        { "name": "Kubernix", "size":15 }
+      ]
+    }
+  ]
+}
